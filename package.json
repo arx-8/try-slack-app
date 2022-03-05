@@ -1,5 +1,10 @@
 {
   "name": "try-slack-app",
   "version": "1.0.0",
-  "private": true
+  "private": true,
+  "engines": {
+    "node": "^16",
+    "npm": "0",
+    "yarn": "^1"
+  }
 }
