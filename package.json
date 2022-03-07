@@ -10,7 +10,7 @@
   "scripts": {
     "build-dev": "swc src -d dist -w --source-maps inline",
     "build": "swc src -d dist",
-    "dev": "(yarn build-dev) & sleep 3 && nodemon --watch dist --ext js --exec \"NODE_ENV=development node --inspect dist/index.js\"",
+    "dev": "(yarn build-dev) & sleep 3 && nodemon --watch dist --ext js --exec \"node --inspect dist/index.js\"",
     "eslint-print-config": "eslint --print-config src/index.ts > misc/eslint-print-config.json",
     "lint-dry:eslint": "eslint -c .eslintrc.js --max-warnings=0 .",
     "lint-dry:format": "prettier --check .",
@@ -19,7 +19,7 @@
     "lint:format": "prettier --write .",
     "lint:tsc": "tsc --noEmit",
     "lint": "npm-run-all --parallel --continue-on-error lint:*",
-    "start": "yarn build && NODE_ENV=production node dist/index.js",
+    "start": "yarn build && node dist/index.js",
     "test-ci": "jest --ci",
     "test": "jest --watch",
     "update-all": "npx --yes npm-check-updates@12.3.0 -u"
@@ -51,5 +51,8 @@
   "optionalDependencies": {
     "chokidar": "3.5.3",
     "nodemon": "2.0.15"
+  },
+  "dependencies": {
+    "dotenv": "16.0.0"
   }
 }

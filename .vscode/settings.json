@@ -1,4 +1,7 @@
 {
+  "files.associations": {
+    ".env.*": "dotenv"
+  },
   "files.encoding": "utf8",
   "files.eol": "\n",
   "files.insertFinalNewline": true,
