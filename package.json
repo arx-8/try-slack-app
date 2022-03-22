@@ -21,7 +21,8 @@
     "lint": "npm-run-all --parallel --continue-on-error lint:*",
     "start": "yarn build && NODE_ENV=production node dist/index.js",
     "test-ci": "jest --ci",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "update-all": "npx --yes npm-check-updates@12.3.0 -u"
   },
   "devDependencies": {
     "@swc/cli": "0.1.55",
