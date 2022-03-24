@@ -23,3 +23,10 @@ export function nonNull<T>(x: T, extraMessage: string): NonNullable<T> {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return x as CastAny
 }
+
+/**
+ * Type-safe `Object.keys`
+ */
+export const objectKeys: <T extends string | number>(
+  o: Record<T, unknown>
+) => T[] = Object.keys

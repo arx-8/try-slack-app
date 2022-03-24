@@ -29,6 +29,7 @@
     "@swc/core": "1.2.148",
     "@swc/jest": "0.2.20",
     "@types/jest": "27.4.1",
+    "@types/lodash-es": "4.17.6",
     "@types/node": "17.0.21",
     "@typescript-eslint/eslint-plugin": "5.13.0",
     "@typescript-eslint/parser": "5.13.0",
@@ -54,6 +55,7 @@
   },
   "dependencies": {
     "@slack/bolt": "3.10.0",
-    "dotenv": "16.0.0"
+    "dotenv": "16.0.0",
+    "lodash-es": "4.17.21"
   }
 }

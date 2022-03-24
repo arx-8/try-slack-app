@@ -107,6 +107,7 @@
     ".prettierrc.js",
     "**/*.d.ts",
     "jest.config.js",
+    "jest.setup.js",
     "src"
   ]
 }
