@@ -1,5 +1,6 @@
 import { Middleware, SlackEventMiddlewareArgs } from "@slack/bolt"
 import axios from "axios"
+import { renderAppHomeView } from "./appHomeView"
 
 export type JapanZipCodeAPIResponse =
   | {
@@ -27,7 +28,7 @@ export type JapanZipCodeAPIResponse =
  */
 export const appHomeOpenedListener: Middleware<
   SlackEventMiddlewareArgs<"app_home_opened">
-> = async ({ body, client, event, logger }) => {
+> = async ({ body, client, logger }) => {
   try {
     // example of external api call
     const resp = await axios.get<JapanZipCodeAPIResponse>(
@@ -38,33 +39,12 @@ export const appHomeOpenedListener: Middleware<
     } ${resp.data.results?.[0]?.address3 ?? ""}`
 
     const result = await client.views.publish({
-      user_id: event.user,
-      view: {
-        blocks: [
-          {
-            text: {
-              text: `*Welcome home, <@${event.user}> :house:*`,
-              type: "mrkdwn",
-            },
-            type: "section",
-          },
-          {
-            text: {
-              text: `Your team_id is ${body.team_id}`,
-              type: "mrkdwn",
-            },
-            type: "section",
-          },
-          {
-            text: {
-              text: `Your address is ${address}`,
-              type: "mrkdwn",
-            },
-            type: "section",
-          },
-        ],
-        type: "home",
-      },
+      user_id: body.event.user,
+      view: renderAppHomeView({
+        address: address,
+        teamID: body.team_id,
+        userID: body.event.user,
+      }),
     })
 
     logger.debug(result)
