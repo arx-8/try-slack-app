@@ -2,9 +2,12 @@ import { LogLevel } from "@slack/bolt"
 import { nonNull, objectKeys } from "../types/utils"
 import { LOG_LEVEL } from "./env"
 
-export const listenerID = {
-  exampleModalView: "exampleModalView",
+export const actionID = {
   openExampleModalView: "openExampleModalView",
+} as const
+
+export const callbackID = {
+  exampleModalView: "exampleModalView",
 } as const
 
 export const logLevel: LogLevel = (() => {

@@ -30,3 +30,17 @@ export function nonNull<T>(x: T, extraMessage: string): NonNullable<T> {
 export const objectKeys: <T extends string | number>(
   o: Record<T, unknown>
 ) => T[] = Object.keys
+
+/**
+ * Create same key:value object
+ */
+export const sameKVObject = <T extends string | number>(
+  array: readonly T[]
+): { [key in T]: T } => {
+  return array.reduce((acc, curr) => {
+    return {
+      ...acc,
+      [curr]: curr,
+    }
+  }, {} as { [key in T]: T })
+}

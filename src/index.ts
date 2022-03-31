@@ -4,9 +4,11 @@ import {
   SLACK_APP_BOT_USER_OAUTH_TOKEN,
   SLACK_SIGNING_SECRET,
 } from "./constants/env"
-import { logLevel } from "./constants/slack"
+import { actionID, callbackID, logLevel } from "./constants/slack"
 import { appHomeOpenedListener } from "./presentation/appHomeOpenedListener"
+import { callbackExampleModalViewListener } from "./presentation/callbackExampleModalViewListener"
 import { commandHeyListener } from "./presentation/commandHeyListener"
+import { openExampleModalViewListener } from "./presentation/openExampleModalViewListener"
 
 const main = async (): Promise<void> => {
   // For health check endpoint. See https://github.com/slackapi/bolt-js/issues/797
@@ -27,6 +29,9 @@ const main = async (): Promise<void> => {
   // define events
   app.event("app_home_opened", appHomeOpenedListener)
   app.command("/hey", commandHeyListener)
+  app.action(actionID.openExampleModalView, openExampleModalViewListener)
+  app.view(callbackID.exampleModalView, callbackExampleModalViewListener)
+
   app.message("hello", async ({ message, say }) => {
     // Listens to incoming messages that contain "hello"
     // say() sends a message to the channel where the event was triggered

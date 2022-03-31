@@ -1,4 +1,5 @@
 import { HomeView } from "@slack/bolt"
+import { actionID } from "../constants/slack"
 
 type Props = {
   address: string
@@ -16,6 +17,22 @@ export const renderAppHomeView = ({
 }: Props): HomeView => {
   return {
     blocks: [
+      {
+        accessory: {
+          action_id: actionID.openExampleModalView,
+          text: {
+            emoji: true,
+            text: "Send",
+            type: "plain_text",
+          },
+          type: "button",
+        },
+        text: {
+          text: "Send Hey!",
+          type: "mrkdwn",
+        },
+        type: "section",
+      },
       {
         text: {
           text: `*Welcome home, <@${userID}> :house:*`,

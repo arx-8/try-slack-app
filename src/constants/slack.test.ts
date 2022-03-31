@@ -1,9 +1,12 @@
 import { uniq } from "lodash-es"
-import { listenerID, logLevel } from "./slack"
+import { actionID, callbackID, logLevel } from "./slack"
 
-describe("listenerID", () => {
-  it("must be unique", () => {
-    const ids = Object.values(listenerID)
+describe("IDs", () => {
+  it("must be consistently unique.", () => {
+    const ids = Object.values({
+      ...actionID,
+      ...callbackID,
+    })
     expect(ids.length).toStrictEqual(uniq(ids).length)
   })
 })
