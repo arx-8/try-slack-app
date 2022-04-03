@@ -51,6 +51,32 @@ ngrok http 3000
 curl https://{FQDN}.ngrok.io/healthz
 ```
 
+### With Docker
+
+```s
+# Create your environment
+cp .env.sample .env
+vi .env
+
+# Build container
+docker build -f dockerfiles/Dockerfile -t try-slack-app .
+
+# Run
+docker run -d --env-file .env -p 3000:3000 try-slack-app
+
+# Check
+curl http://127.0.0.1:3000/healthz
+```
+
+#### Docker debug snippets
+
+```s
+docker logs {CONTAINER_ID}
+
+# Use sh (Replace "Runtime container" with "gcr.io/distroless/nodejs" to "node")
+docker run --rm -it try-slack-app sh
+```
+
 ## Debug (VSCode)
 
 Run `yarn dev`, Then attach vscode debugger.

@@ -1,5 +1,4 @@
 // @ts-check
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
 /**
  * @type {import("eslint").Linter.Config}
@@ -92,4 +91,5 @@ const config = {
   },
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 module.exports = config

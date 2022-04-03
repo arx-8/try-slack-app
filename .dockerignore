@@ -1,0 +1,6 @@
+*
+!.swcrc
+!package.json
+!src
+!webpack.config.js
+!yarn.lock

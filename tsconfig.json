@@ -108,6 +108,7 @@
     "**/*.d.ts",
     "jest.config.js",
     "jest.setup.js",
-    "src"
+    "src",
+    "webpack.config.js"
   ]
 }
